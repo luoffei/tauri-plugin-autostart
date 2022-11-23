@@ -11,4 +11,7 @@ exclude = ["/examples", "/webview-dist", "/webview-src", "node_modules"]
 tauri = { git = "https://github.com/luoffei/tauri.git", branch = "1.2.0"}
 serde = "1.0"
 thiserror = "1.0"
-auto-launch = "0.3"
+
+[dependencies.auto-launch]
+git = "https://github.com/luoffei/auto-launch.git"
+branch = "elevate_privileges"

@@ -107,6 +107,7 @@ pub fn init<R: Runtime>(
         builder.set_args(&args);
       }
       builder.set_use_launch_agent(matches!(macos_launcher, MacosLauncher::LaunchAgent));
+      builder.set_elevate_privileges(app.config().tauri.bundle.windows.elevate_privileges);
 
       let current_exe = current_exe()?;
 
