@@ -95,6 +95,7 @@ async fn is_enabled(manager: State<'_, AutoLaunchManager>) -> Result<bool> {
 /// `args` - are passed to your app on startup.
 pub fn init<R: Runtime>(
   macos_launcher: MacosLauncher,
+  elevate_privileges: bool,
   args: Option<Vec<&'static str>>,
 ) -> TauriPlugin<R> {
   Builder::new("autostart")
@@ -107,7 +108,7 @@ pub fn init<R: Runtime>(
         builder.set_args(&args);
       }
       builder.set_use_launch_agent(matches!(macos_launcher, MacosLauncher::LaunchAgent));
-      builder.set_elevate_privileges(app.config().tauri.bundle.windows.elevate_privileges);
+      builder.set_elevate_privileges(elevate_privileges);
 
       let current_exe = current_exe()?;
 
